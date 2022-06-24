@@ -121,7 +121,7 @@ class Form extends React.Component {
               type="checkbox"
               id="superTrunfo"
               name="superTrunfo"
-              value={ cardTrunfo }
+              checked={ cardTrunfo }
               onChange={ onInputChange }
             />
           </label>
