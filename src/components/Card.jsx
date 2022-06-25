@@ -31,7 +31,7 @@ class Card extends React.Component {
           { cardAttr3 }
         </p>
         <p data-testid="rare-card">
-          Está carta é:
+          Esta carta é:
           { cardRare }
         </p>
         { cardTrunfo && <p data-testid="trunfo-card">Super Trunfo</p>}

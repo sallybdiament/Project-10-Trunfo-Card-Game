@@ -14,6 +14,7 @@ class Form extends React.Component {
           <label htmlFor="cardName">
             Nome de uma mulher de sucesso:
             <input
+              required
               data-testid="name-input"
               type="text"
               id="cardName"
@@ -28,6 +29,7 @@ class Form extends React.Component {
           <label htmlFor="cardDescription">
             Descrição:
             <textarea
+              required
               data-testid="description-input"
               id="cardDescription"
               name="cardDescription"
@@ -42,8 +44,7 @@ class Form extends React.Component {
             Nível de Coragem:
             <input
               type="number"
-              min="0"
-              max="100"
+              maxLength="2"
               data-testid="attr1-input"
               id="cardAttr1"
               name="cardAttr1"
@@ -58,8 +59,7 @@ class Form extends React.Component {
             Nível de Superação:
             <input
               type="number"
-              min="0"
-              max="100"
+              maxLength="2"
               data-testid="attr2-input"
               id="cardAttr2"
               name="cardAttr2"
@@ -74,8 +74,7 @@ class Form extends React.Component {
             Nível de Persistência:
             <input
               type="number"
-              min="0"
-              max="100"
+              maxLength="2"
               data-testid="attr3-input"
               id="cardAttr3"
               name="cardAttr3"
@@ -90,6 +89,7 @@ class Form extends React.Component {
             Link para Imagem:
             <input
               data-testid="image-input"
+              required
               type="text"
               id="cardImage"
               name="cardImage"
@@ -103,6 +103,7 @@ class Form extends React.Component {
             Opções de raridade:
             <select
               data-testid="rare-input"
+              required
               name="cardRare"
               id="cardRare"
               value={ cardRare }

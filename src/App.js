@@ -14,8 +14,13 @@ class App extends React.Component {
       cardImage: '',
       cardRare: '',
       cardTrunfo: false,
+      isSaveButtonDisabled: true,
     };
     // }
+
+    //         validate = () => {
+    // const
+    //         }
 
         onInputChange = (event) => {
         //   const { name } = event.target;
@@ -23,13 +28,14 @@ class App extends React.Component {
         //   this.setState({ [name]: value });
         //   this.setState({ cardName: event.target.value });
           const { target } = event;
-          this.setState({ [target.name]: target.type === 'checkbox'
-            ? target.checked : target.value });
+          this.setState({
+            [target.name]: target.type === 'checkbox'
+              ? target.checked
+              : target.value,
+          }, () => this.setState({
+            isSaveButtonDisabled: this.validate(),
+          }));
         }
-
-        // isSaveButtonDisabled =(event) => {
-        //   event.preventDefault();
-        // }
 
         // onSaveButtonClick = (event) => {
         //   event.preventDefault();
@@ -38,7 +44,7 @@ class App extends React.Component {
         render() {
           const { cardName, cardDescription, cardAttr1 } = this.state;
           const { cardAttr2, cardAttr3, cardImage } = this.state;
-          const { cardRare, cardTrunfo } = this.state;
+          const { cardRare, cardTrunfo, isSaveButtonDisabled } = this.state;
           return (
             <div>
               <h1>Tryunfo Grandes Mulheres</h1>
@@ -53,7 +59,7 @@ class App extends React.Component {
                 cardTrunfo={ cardTrunfo }
                 onInputChange={ this.onInputChange }
                 // onSaveButtonClick={ this.isSaveButtonClick }
-                // onSaveButtonDesabled={ this.isSaveButtonDesdisabled }
+                isSaveButtonDisabled={ isSaveButtonDisabled }
               />
               <Card
                 cardName={ cardName }
