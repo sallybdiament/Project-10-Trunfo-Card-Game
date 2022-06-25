@@ -2,155 +2,141 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 class Form extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      cardName: '',
-    };
-  }
-
-    onInputChange = (event) => {
-    //   const { name } = event.target;
-    //   const { value } = event.target;
-    //   this.setState({ [name]: value });
-      this.setState({ cardName: event.target.value });
-    }
-
-    render() {
-      const { cardName, cardDescription, cardAttr1 } = this.props;
-      const { cardAttr2, cardAttr3, cardImage } = this.props;
-      const { cardRare, cardTrunfo, hasTrunfo, isSaveButtonDisabled } = this.props;
-      const { onInputChange, onSaveButtonClick } = this.props;
-      return (
-        <div>
-          <div className="campoForm">
-            <label htmlFor="cardName">
-              Nome de uma mulher de sucesso:
-              <input
-                data-testid="name-input"
-                type="text"
-                id="cardName"
-                name="cardName"
-                value={ cardName }
-                onChange={ onInputChange }
-              />
-            </label>
-          </div>
-
-          <div className="campoForm">
-            <label htmlFor="descricao">
-              Descrição:
-              <textarea
-                data-testid="description-input"
-                id="descricao"
-                name="descricao"
-                value={ cardDescription }
-                onChange={ onInputChange }
-              />
-            </label>
-          </div>
-
-          <div className="campoForm">
-            <label htmlFor="atributoCoragem">
-              Nível de Coragem:
-              <input
-                type="number"
-                min="0"
-                max="100"
-                data-testid="attr1-input"
-                id="atributoCoragem"
-                name="atributoCoragem"
-                value={ cardAttr1 }
-                onChange={ onInputChange }
-              />
-            </label>
-          </div>
-
-          <div className="campoForm">
-            <label htmlFor="atributoSuperacao">
-              Nível de Superação:
-              <input
-                type="number"
-                min="0"
-                max="100"
-                data-testid="attr2-input"
-                id="atributoSuperacao"
-                name="atributoSuperacao"
-                value={ cardAttr2 }
-                onChange={ onInputChange }
-              />
-            </label>
-          </div>
-
-          <div className="campoForm">
-            <label htmlFor="atributoPersistencia">
-              Nível de Persistência:
-              <input
-                type="number"
-                min="0"
-                max="100"
-                data-testid="attr3-input"
-                id="atributoPersistencia"
-                name="atributoPersistencia"
-                value={ cardAttr3 }
-                onChange={ onInputChange }
-              />
-            </label>
-          </div>
-
-          <div className="campoForm">
-            <label htmlFor="img">
-              Link para Imagem:
-              <input
-                data-testid="image-input"
-                type="text"
-                id="img"
-                name="img"
-                value={ cardImage }
-                onChange={ onInputChange }
-              />
-            </label>
-          </div>
-          <div className="campoForm">
-            <label htmlFor="raridade">
-              Opções de raridade:
-              <select
-                data-testid="rare-input"
-                name="raridade"
-                id="raridade"
-                value={ cardRare }
-                onChange={ onInputChange }
-              >
-                <option>normal</option>
-                <option>raro</option>
-                <option>muito raro</option>
-              </select>
-            </label>
-          </div>
-          <div className="campoForm">
-            <label htmlFor="superTrunfo">
-              É super trunfo?
-              <input
-                data-testid="trunfo-input"
-                type="checkbox"
-                id="superTrunfo"
-                name="superTrunfo"
-                checked={ cardTrunfo }
-                onChange={ onInputChange }
-              />
-            </label>
-          </div>
-          <button
-            type="submit"
-            data-testid="save-button"
-            disabled={ isSaveButtonDisabled }
-            onClick={ onSaveButtonClick }
-          >
-            Salvar
-          </button>
+  render() {
+    const { cardName, cardDescription, cardAttr1, cardAttr2 } = this.props;
+    const { cardAttr3, cardImage, cardRare, cardTrunfo } = this.props;
+    const { hasTrunfo, isSaveButtonDisabled } = this.props;
+    const { onInputChange, onSaveButtonClick } = this.props;
+    return (
+      <div>
+        <div className="campoForm">
+          <label htmlFor="cardName">
+            Nome de uma mulher de sucesso:
+            <input
+              data-testid="name-input"
+              type="text"
+              id="cardName"
+              name="cardName"
+              value={ cardName }
+              onChange={ onInputChange }
+            />
+          </label>
         </div>
-      );
-    }
+
+        <div className="campoForm">
+          <label htmlFor="cardDescription">
+            Descrição:
+            <textarea
+              data-testid="description-input"
+              id="cardDescription"
+              name="cardDescription"
+              value={ cardDescription }
+              onChange={ onInputChange }
+            />
+          </label>
+        </div>
+
+        <div className="campoForm">
+          <label htmlFor="cardAttr1">
+            Nível de Coragem:
+            <input
+              type="number"
+              min="0"
+              max="100"
+              data-testid="attr1-input"
+              id="cardAttr1"
+              name="cardAttr1"
+              value={ cardAttr1 }
+              onChange={ onInputChange }
+            />
+          </label>
+        </div>
+
+        <div className="campoForm">
+          <label htmlFor="cardAttr2">
+            Nível de Superação:
+            <input
+              type="number"
+              min="0"
+              max="100"
+              data-testid="attr2-input"
+              id="cardAttr2"
+              name="cardAttr2"
+              value={ cardAttr2 }
+              onChange={ onInputChange }
+            />
+          </label>
+        </div>
+
+        <div className="campoForm">
+          <label htmlFor="cardAttr3">
+            Nível de Persistência:
+            <input
+              type="number"
+              min="0"
+              max="100"
+              data-testid="attr3-input"
+              id="cardAttr3"
+              name="cardAttr3"
+              value={ cardAttr3 }
+              onChange={ onInputChange }
+            />
+          </label>
+        </div>
+
+        <div className="campoForm">
+          <label htmlFor="cardImage">
+            Link para Imagem:
+            <input
+              data-testid="image-input"
+              type="text"
+              id="cardImage"
+              name="cardImage"
+              value={ cardImage }
+              onChange={ onInputChange }
+            />
+          </label>
+        </div>
+        <div className="campoForm">
+          <label htmlFor="cardRare">
+            Opções de raridade:
+            <select
+              data-testid="rare-input"
+              name="cardRare"
+              id="cardRare"
+              value={ cardRare }
+              onChange={ onInputChange }
+            >
+              <option>normal</option>
+              <option>raro</option>
+              <option>muito raro</option>
+            </select>
+          </label>
+        </div>
+        <div className="campoForm">
+          <label htmlFor="cardTrunfo">
+            É super trunfo?
+            <input
+              data-testid="trunfo-input"
+              type="checkbox"
+              id="cardTrunfo"
+              name="cardTrunfo"
+              checked={ cardTrunfo }
+              onChange={ onInputChange }
+            />
+          </label>
+        </div>
+        <button
+          type="submit"
+          data-testid="save-button"
+          disabled={ isSaveButtonDisabled }
+          onClick={ onSaveButtonClick }
+        >
+          Salvar
+        </button>
+      </div>
+    );
+  }
 }
 
 export default Form;
