@@ -5,14 +5,14 @@ class Card extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      cardName: '',
-      cardDescription: '',
-      cardAttr1: '',
-      cardAttr2: '',
-      cardAttr3: '',
-      cardImage: '',
-      cardRare: 'normal',
-      cardTrunfo: '',
+      cardName: 'Nome da carta',
+      cardDescription: 'Descrição da carta',
+      cardAttr1: '12',
+      cardAttr2: '34',
+      cardAttr3: '56',
+      cardImage: 'url-to-image',
+      cardRare: 'raro',
+      cardTrunfo: false,
     };
   }
 
