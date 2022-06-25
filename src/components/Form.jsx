@@ -5,8 +5,9 @@ class Form extends React.Component {
   render() {
     const { cardName, cardDescription, cardAttr1, cardAttr2 } = this.props;
     const { cardAttr3, cardImage, cardRare, cardTrunfo } = this.props;
-    const { hasTrunfo, isSaveButtonDisabled } = this.props;
+    const { isSaveButtonDisabled } = this.props;
     const { onInputChange, onSaveButtonClick } = this.props;
+    // const { hasTrunfo } = this.props;
     return (
       <div>
         <div className="campoForm">
@@ -139,8 +140,6 @@ class Form extends React.Component {
   }
 }
 
-export default Form;
-
 Form.propTypes = {
   cardName: PropTypes.string.isRequired,
   cardDescription: PropTypes.string.isRequired,
@@ -150,8 +149,10 @@ Form.propTypes = {
   cardImage: PropTypes.string.isRequired,
   cardRare: PropTypes.string.isRequired,
   cardTrunfo: PropTypes.bool.isRequired,
-  hasTrunfo: PropTypes.bool.isRequired,
+  //   hasTrunfo: PropTypes.bool.isRequired,
   isSaveButtonDisabled: PropTypes.bool.isRequired,
   onInputChange: PropTypes.func.isRequired,
   onSaveButtonClick: PropTypes.func.isRequired,
 };
+
+export default Form;
