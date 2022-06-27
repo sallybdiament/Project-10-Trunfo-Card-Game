@@ -5,18 +5,19 @@ import Form from './components/Form';
 class App extends React.Component {
   // constructor() {
   //   super();
-    state = {
-      cardName: '',
-      cardDescription: '',
-      cardAttr1: '0',
-      cardAttr2: '0',
-      cardAttr3: '0',
-      cardImage: '',
-      cardRare: 'normal',
-      cardTrunfo: false,
-      isSaveButtonDisabled: true,
-    };
-    // }
+  state = {
+    cardName: '',
+    cardDescription: '',
+    cardAttr1: '0',
+    cardAttr2: '0',
+    cardAttr3: '0',
+    cardImage: '',
+    cardRare: 'normal',
+    cardTrunfo: false,
+    isSaveButtonDisabled: true,
+    newCard: [],
+  };
+  // }
 
         validate = () => {
           const {
@@ -50,15 +51,60 @@ class App extends React.Component {
           }));
         }
 
-        // onSaveButtonClick = (event) => {
-        //   console.log('submit');
-        //   // this.setState({ topics: })
-        // }
+        onSaveButtonClick = () => {
+          // const {
+          //   cardName,
+          //   cardDescription,
+          //   cardAttr1,
+          //   cardAttr2,
+          //   cardAttr3,
+          //   cardImage,
+          //   cardRare,
+          //   cardTrunfo,
+          //   isSaveButtonDisabled,
+          //   newCard,
+          // } = this.state;
+          // const objVazio = {
+          //   cardName,
+          //   cardDescription,
+          //   cardAttr1,
+          //   cardAttr2,
+          //   cardAttr3,
+          //   cardImage,
+          //   cardRare,
+          //   cardTrunfo,
+          //   isSaveButtonDisabled,
+          //   newCard,
+          // }
+          // this.setState((estadoAnterior) => ({
+          //   newCard: [...estadoAnterior, objVazio]
+          // })
+          this.setState({
+            cardName: '',
+            cardDescription: '',
+            cardAttr1: '0',
+            cardAttr2: '0',
+            cardAttr3: '0',
+            cardImage: '',
+            cardRare: 'normal',
+            cardTrunfo: false,
+            isSaveButtonDisabled: true,
+          })
+        }
 
         render() {
-          const { cardName, cardDescription, cardAttr1 } = this.state;
-          const { cardAttr2, cardAttr3, cardImage } = this.state;
-          const { cardRare, cardTrunfo, isSaveButtonDisabled } = this.state;
+          const {
+            cardName,
+            cardDescription,
+            cardAttr1,
+            cardAttr2,
+            cardAttr3,
+            cardImage,
+            cardRare,
+            cardTrunfo,
+            isSaveButtonDisabled,
+            newCard,
+          } = this.state;
           return (
             <div>
               <h1>Tryunfo Grandes Mulheres</h1>
@@ -85,6 +131,13 @@ class App extends React.Component {
                 cardRare={ cardRare }
                 cardTrunfo={ cardTrunfo }
               />
+              {/* <div className="topic-list">
+                {topics.map((topic) => (
+                  <div className="topic-content" key={ topic.title }>
+                    <TopicCard topic={ topic } funcaoParaDeletarOCart={ this.deleteCard } />
+                  </div>
+                ))}
+              </div> */}
             </div>
           );
         }
