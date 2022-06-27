@@ -15,7 +15,7 @@ class App extends React.Component {
     cardRare: 'normal',
     cardTrunfo: false,
     isSaveButtonDisabled: true,
-    newCard: [],
+    // newCard: [],
   };
   // }
 
@@ -89,7 +89,7 @@ class App extends React.Component {
             cardRare: 'normal',
             cardTrunfo: false,
             isSaveButtonDisabled: true,
-          })
+          });
         }
 
         render() {
@@ -103,7 +103,7 @@ class App extends React.Component {
             cardRare,
             cardTrunfo,
             isSaveButtonDisabled,
-            newCard,
+            // newCard,
           } = this.state;
           return (
             <div>
