@@ -15,7 +15,7 @@ class App extends React.Component {
     cardRare: 'normal',
     cardTrunfo: false,
     isSaveButtonDisabled: true,
-    // newCard: [],
+    newCard: [],
   };
   // }
 
@@ -52,34 +52,31 @@ class App extends React.Component {
         }
 
         onSaveButtonClick = () => {
-          // const {
-          //   cardName,
-          //   cardDescription,
-          //   cardAttr1,
-          //   cardAttr2,
-          //   cardAttr3,
-          //   cardImage,
-          //   cardRare,
-          //   cardTrunfo,
-          //   isSaveButtonDisabled,
-          //   newCard,
-          // } = this.state;
-          // const objVazio = {
-          //   cardName,
-          //   cardDescription,
-          //   cardAttr1,
-          //   cardAttr2,
-          //   cardAttr3,
-          //   cardImage,
-          //   cardRare,
-          //   cardTrunfo,
-          //   isSaveButtonDisabled,
-          //   newCard,
-          // }
-          // this.setState((estadoAnterior) => ({
-          //   newCard: [...estadoAnterior, objVazio]
-          // })
-          this.setState({
+          const {
+            cardName,
+            cardDescription,
+            cardAttr1,
+            cardAttr2,
+            cardAttr3,
+            cardImage,
+            cardRare,
+            cardTrunfo,
+            isSaveButtonDisabled,
+            // newCard,
+          } = this.state;
+          const objVazio = {
+            cardName,
+            cardDescription,
+            cardAttr1,
+            cardAttr2,
+            cardAttr3,
+            cardImage,
+            cardRare,
+            cardTrunfo,
+            isSaveButtonDisabled,
+          };
+          this.setState((estadoAnterior) => ({
+            newCard: [...estadoAnterior.newCard, objVazio],
             cardName: '',
             cardDescription: '',
             cardAttr1: '0',
@@ -89,7 +86,9 @@ class App extends React.Component {
             cardRare: 'normal',
             cardTrunfo: false,
             isSaveButtonDisabled: true,
-          });
+          }));
+          // this.setState({
+          // });
         }
 
         render() {
