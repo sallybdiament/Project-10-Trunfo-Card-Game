@@ -6,21 +6,34 @@ class App extends React.Component {
   // constructor() {
   //   super();
     state = {
-      cardName: 'Sally',
+      cardName: '',
       cardDescription: '',
-      cardAttr1: '',
-      cardAttr2: '',
-      cardAttr3: '',
+      cardAttr1: '0',
+      cardAttr2: '0',
+      cardAttr3: '0',
       cardImage: '',
-      cardRare: '',
+      cardRare: 'normal',
       cardTrunfo: false,
       isSaveButtonDisabled: true,
     };
     // }
 
-    //         validate = () => {
-    // const
-    //         }
+        validate = () => {
+          const {
+            cardName, cardDescription, cardImage, cardAttr1, cardAttr2, cardAttr3,
+          } = this.state;
+          const soma = (Number(cardAttr1) + Number(cardAttr2) + Number(cardAttr3));
+          const noventa = 91;
+          const somaMax = 210;
+          if (!cardName || !cardDescription || !cardImage
+            || soma > somaMax
+            || Number(cardAttr1) >= noventa
+            || Number(cardAttr2) >= noventa
+            || Number(cardAttr3) >= noventa
+            || Number(cardAttr1) < 0
+            || Number(cardAttr2) < 0
+            || Number(cardAttr3) < 0) return 'true';
+        }
 
         onInputChange = (event) => {
         //   const { name } = event.target;
@@ -38,7 +51,8 @@ class App extends React.Component {
         }
 
         // onSaveButtonClick = (event) => {
-        //   event.preventDefault();
+        //   console.log('submit');
+        //   // this.setState({ topics: })
         // }
 
         render() {
@@ -58,7 +72,7 @@ class App extends React.Component {
                 cardRare={ cardRare }
                 cardTrunfo={ cardTrunfo }
                 onInputChange={ this.onInputChange }
-                // onSaveButtonClick={ this.isSaveButtonClick }
+                onSaveButtonClick={ this.onSaveButtonClick }
                 isSaveButtonDisabled={ isSaveButtonDisabled }
               />
               <Card
