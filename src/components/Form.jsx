@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import '../CSS/Form.css';
 
 class Form extends React.Component {
   render() {
@@ -16,7 +17,7 @@ class Form extends React.Component {
     const { isSaveButtonDisabled, onInputChange, onSaveButtonClick } = this.props;
     const { hasTrunfo } = this.props;
     return (
-      <div>
+      <div className="card">
         <div className="campoForm">
           <label htmlFor="cardName">
             Nome de uma mulher de sucesso:
@@ -141,7 +142,6 @@ class Form extends React.Component {
               )
           }
         </div>
-        {/* <input */}
         <button
           type="submit"
           data-testid="save-button"
@@ -149,7 +149,6 @@ class Form extends React.Component {
           onClick={ onSaveButtonClick }
         >
           Salvar
-          {/* /> */}
         </button>
       </div>
     );

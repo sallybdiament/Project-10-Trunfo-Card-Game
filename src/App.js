@@ -1,6 +1,7 @@
 import React from 'react';
 import Card from './components/Card';
 import Form from './components/Form';
+import './CSS/App.css';
 
 class App extends React.Component {
   // constructor() {
@@ -98,6 +99,13 @@ class App extends React.Component {
           // });
         }
 
+        deleteCard = (cardName) => {
+          console.log(cardName);
+          // this.setState((prev) => ({
+          //   newCard: prev.newCard.filter((carta) => carta.cardName !== cardName),
+          // }));
+        }
+
         render() {
           const {
             cardName,
@@ -114,9 +122,29 @@ class App extends React.Component {
           } = this.state;
           return (
             <div>
-              <h1>Tryunfo Grandes Mulheres</h1>
-              <form>
-                <Form
+              <h1 className="titulo">Tryunfo Grandes Mulheres</h1>
+              <div className="preencherForm">
+                <form>
+                  <Form
+                    className="card"
+                    cardName={ cardName }
+                    cardDescription={ cardDescription }
+                    cardAttr1={ cardAttr1 }
+                    cardAttr2={ cardAttr2 }
+                    cardAttr3={ cardAttr3 }
+                    cardImage={ cardImage }
+                    cardRare={ cardRare }
+                    cardTrunfo={ cardTrunfo }
+                    onInputChange={ this.onInputChange }
+                    onSaveButtonClick={ this.onSaveButtonClick }
+                    isSaveButtonDisabled={ isSaveButtonDisabled }
+                    hasTrunfo={ hasTrunfo }
+                    sendForm={ this.sendForm }
+                  />
+                </form>
+                {/* <h1>Sua nova carta será:</h1> */}
+                <Card
+                  className="card"
                   cardName={ cardName }
                   cardDescription={ cardDescription }
                   cardAttr1={ cardAttr1 }
@@ -125,28 +153,18 @@ class App extends React.Component {
                   cardImage={ cardImage }
                   cardRare={ cardRare }
                   cardTrunfo={ cardTrunfo }
-                  onInputChange={ this.onInputChange }
-                  onSaveButtonClick={ this.onSaveButtonClick }
-                  isSaveButtonDisabled={ isSaveButtonDisabled }
-                  hasTrunfo={ hasTrunfo }
-                  sendForm={ this.sendForm }
                 />
-              </form>
-              <h1>Sua nova carta será:</h1>
-              <Card
-                cardName={ cardName }
-                cardDescription={ cardDescription }
-                cardAttr1={ cardAttr1 }
-                cardAttr2={ cardAttr2 }
-                cardAttr3={ cardAttr3 }
-                cardImage={ cardImage }
-                cardRare={ cardRare }
-                cardTrunfo={ cardTrunfo }
-              />
-              <h1>Cartas criadas:</h1>
-              {
-                newCard.map((carta, i) => <Card key={ i } { ...carta } />)
-              }
+              </div>
+              <h1 className="titulo">Cartas criadas:</h1>
+              <div className="topic-list">
+                {
+                  newCard.map((carta) => (<Card
+                    key={ carta.cardName }
+                    { ...carta }
+                    deleteCard={ this.deleteCard }
+                  />))
+                }
+              </div>
             </div>
           );
         }

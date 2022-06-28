@@ -12,25 +12,14 @@ class Card extends React.Component {
       cardImage,
       cardRare,
       cardTrunfo,
+      newCard,
+      deleteCard,
     } = this.props;
-    // const {
-    //   currentState: {
-    //     cardName,
-    //     cardDescription,
-    //     cardAttr1,
-    //     cardAttr2,
-    //     cardAttr3,
-    //     cardImage,
-    //     cardRare,
-    //     cardTrunfo,
-    //   },
-    // } = this.props;
     return (
       <div className="carta">
         <p data-testid="name-card">
           { `Personagem: ${cardName}` }
         </p>
-        <img src={ cardImage } alt={ cardName } data-testid="image-card" />
         <p data-testid="description-card">
           Descrição:
           { cardDescription }
@@ -52,6 +41,15 @@ class Card extends React.Component {
           { cardRare }
         </p>
         { cardTrunfo && <p data-testid="trunfo-card">Super Trunfo</p>}
+        <img src={ cardImage } alt={ cardName } data-testid="image-card" />
+        <button
+          type="button"
+          data-testid="delete-button"
+          onClick={ () => deleteCard(newCard) }
+          // (newCard.cardName)
+        >
+          Excluir
+        </button>
       </div>
     );
   }
@@ -66,6 +64,8 @@ Card.propTypes = {
   cardImage: PropTypes.string.isRequired,
   cardRare: PropTypes.string.isRequired,
   cardTrunfo: PropTypes.bool.isRequired,
+  deleteCard: PropTypes.func.isRequired,
+  newCard: PropTypes.string.isRequired,
 };
 
 export default Card;
