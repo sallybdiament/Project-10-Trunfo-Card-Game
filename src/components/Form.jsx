@@ -3,11 +3,18 @@ import PropTypes from 'prop-types';
 
 class Form extends React.Component {
   render() {
-    const { cardName, cardDescription, cardAttr1, cardAttr2 } = this.props;
-    const { cardAttr3, cardImage, cardRare, cardTrunfo } = this.props;
-    const { isSaveButtonDisabled } = this.props;
-    const { onInputChange, onSaveButtonClick } = this.props;
-    // const { hasTrunfo } = this.props;
+    const {
+      cardName,
+      cardDescription,
+      cardAttr1,
+      cardAttr2,
+      cardAttr3,
+      cardImage,
+      cardRare,
+      cardTrunfo,
+    } = this.props;
+    const { isSaveButtonDisabled, onInputChange, onSaveButtonClick } = this.props;
+    const { hasTrunfo } = this.props;
     return (
       <div>
         <div className="campoForm">
@@ -116,18 +123,25 @@ class Form extends React.Component {
           </label>
         </div>
         <div className="campoForm">
-          <label htmlFor="cardTrunfo">
-            É super trunfo?
-            <input
-              data-testid="trunfo-input"
-              type="checkbox"
-              id="cardTrunfo"
-              name="cardTrunfo"
-              checked={ cardTrunfo }
-              onChange={ onInputChange }
-            />
-          </label>
+          {
+            hasTrunfo
+              ? <p>Você já tem um Super Trunfo em seu baralho</p>
+              : (
+                <label htmlFor="cardTrunfo">
+                  É super trunfo?
+                  <input
+                    data-testid="trunfo-input"
+                    type="checkbox"
+                    id="cardTrunfo"
+                    name="cardTrunfo"
+                    checked={ cardTrunfo }
+                    onChange={ onInputChange }
+                  />
+                </label>
+              )
+          }
         </div>
+        {/* <input */}
         <button
           type="submit"
           data-testid="save-button"
@@ -135,6 +149,7 @@ class Form extends React.Component {
           onClick={ onSaveButtonClick }
         >
           Salvar
+          {/* /> */}
         </button>
       </div>
     );
@@ -150,7 +165,7 @@ Form.propTypes = {
   cardImage: PropTypes.string.isRequired,
   cardRare: PropTypes.string.isRequired,
   cardTrunfo: PropTypes.bool.isRequired,
-  //   hasTrunfo: PropTypes.bool.isRequired,
+  hasTrunfo: PropTypes.bool.isRequired,
   isSaveButtonDisabled: PropTypes.bool.isRequired,
   onInputChange: PropTypes.func.isRequired,
   onSaveButtonClick: PropTypes.func.isRequired,

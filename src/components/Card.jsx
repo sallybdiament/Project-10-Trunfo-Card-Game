@@ -3,16 +3,33 @@ import PropTypes from 'prop-types';
 
 class Card extends React.Component {
   render() {
-    const { cardName, cardDescription, cardAttr1 } = this.props;
-    const { cardAttr2, cardAttr3, cardImage } = this.props;
-    const { cardRare, cardTrunfo } = this.props;
+    const {
+      cardName,
+      cardDescription,
+      cardAttr1,
+      cardAttr2,
+      cardAttr3,
+      cardImage,
+      cardRare,
+      cardTrunfo,
+    } = this.props;
+    // const {
+    //   currentState: {
+    //     cardName,
+    //     cardDescription,
+    //     cardAttr1,
+    //     cardAttr2,
+    //     cardAttr3,
+    //     cardImage,
+    //     cardRare,
+    //     cardTrunfo,
+    //   },
+    // } = this.props;
     return (
       <div className="carta">
-        <h1>Sua nova carta será: </h1>
-        <h1 data-testid="name-card">
-          Personagem:
-          { cardName }
-        </h1>
+        <p data-testid="name-card">
+          { `Personagem: ${cardName}` }
+        </p>
         <img src={ cardImage } alt={ cardName } data-testid="image-card" />
         <p data-testid="description-card">
           Descrição:

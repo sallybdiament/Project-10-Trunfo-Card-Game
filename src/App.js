@@ -16,6 +16,7 @@ class App extends React.Component {
     cardTrunfo: false,
     isSaveButtonDisabled: true,
     newCard: [],
+    hasTrunfo: false,
   };
   // }
 
@@ -26,7 +27,8 @@ class App extends React.Component {
           const soma = (Number(cardAttr1) + Number(cardAttr2) + Number(cardAttr3));
           const noventa = 91;
           const somaMax = 210;
-          if (!cardName || !cardDescription || !cardImage
+          if (
+            !cardName || !cardDescription || !cardImage
             || soma > somaMax
             || Number(cardAttr1) >= noventa
             || Number(cardAttr2) >= noventa
@@ -49,6 +51,11 @@ class App extends React.Component {
           }, () => this.setState({
             isSaveButtonDisabled: this.validate(),
           }));
+        }
+
+        hasTrunfo = () => {
+          const { newCard } = this.state;
+          return newCard.some((carta) => carta.cardTrunfo);
         }
 
         onSaveButtonClick = () => {
@@ -86,7 +93,7 @@ class App extends React.Component {
             cardRare: 'normal',
             cardTrunfo: false,
             isSaveButtonDisabled: true,
-          }));
+          }), () => this.setState({ hasTrunfo: this.hasTrunfo() }));
           // this.setState({
           // });
         }
@@ -102,24 +109,30 @@ class App extends React.Component {
             cardRare,
             cardTrunfo,
             isSaveButtonDisabled,
-            // newCard,
+            newCard,
+            hasTrunfo,
           } = this.state;
           return (
             <div>
               <h1>Tryunfo Grandes Mulheres</h1>
-              <Form
-                cardName={ cardName }
-                cardDescription={ cardDescription }
-                cardAttr1={ cardAttr1 }
-                cardAttr2={ cardAttr2 }
-                cardAttr3={ cardAttr3 }
-                cardImage={ cardImage }
-                cardRare={ cardRare }
-                cardTrunfo={ cardTrunfo }
-                onInputChange={ this.onInputChange }
-                onSaveButtonClick={ this.onSaveButtonClick }
-                isSaveButtonDisabled={ isSaveButtonDisabled }
-              />
+              <form>
+                <Form
+                  cardName={ cardName }
+                  cardDescription={ cardDescription }
+                  cardAttr1={ cardAttr1 }
+                  cardAttr2={ cardAttr2 }
+                  cardAttr3={ cardAttr3 }
+                  cardImage={ cardImage }
+                  cardRare={ cardRare }
+                  cardTrunfo={ cardTrunfo }
+                  onInputChange={ this.onInputChange }
+                  onSaveButtonClick={ this.onSaveButtonClick }
+                  isSaveButtonDisabled={ isSaveButtonDisabled }
+                  hasTrunfo={ hasTrunfo }
+                  sendForm={ this.sendForm }
+                />
+              </form>
+              <h1>Sua nova carta será:</h1>
               <Card
                 cardName={ cardName }
                 cardDescription={ cardDescription }
@@ -130,13 +143,10 @@ class App extends React.Component {
                 cardRare={ cardRare }
                 cardTrunfo={ cardTrunfo }
               />
-              {/* <div className="topic-list">
-                {topics.map((topic) => (
-                  <div className="topic-content" key={ topic.title }>
-                    <TopicCard topic={ topic } funcaoParaDeletarOCart={ this.deleteCard } />
-                  </div>
-                ))}
-              </div> */}
+              <h1>Cartas criadas:</h1>
+              {
+                newCard.map((carta, i) => <Card key={ i } { ...carta } />)
+              }
             </div>
           );
         }
