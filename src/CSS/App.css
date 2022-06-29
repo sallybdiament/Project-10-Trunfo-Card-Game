@@ -1,9 +1,9 @@
 body {
   box-sizing: border-box;
-  margin: 0;
-  padding: 0;
   background-color: rgb(167, 163, 163);
   font-size: 100%;
+  margin: 0;
+  padding: 0;
 }
 
 .titulo {
@@ -11,6 +11,7 @@ body {
   text-align: center;
   padding: 10px;
 }
+
 .preencherForm {
   display: flex;
   background-color: white;
