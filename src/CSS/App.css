@@ -24,9 +24,9 @@ body {
 
 .card {
   background-color: rgb(202, 202, 206);
+  font-size: 14px;
   margin: 10px;
   padding: 10px;
-  font-size: 14px;
   line-height: 150%;
   width: 80%;
 }
