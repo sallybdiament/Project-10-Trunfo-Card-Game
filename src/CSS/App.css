@@ -13,20 +13,22 @@ body {
 }
 .preencherForm {
     display: flex;
-    padding: 50px;
-    margin: 50px;
+    padding: 20px;
+    margin: 20px;
     background-color: white;
     border: black solid 1px;
     justify-content: space-around;
     align-items: stretch;
-    line-height: 250%;
-    font-size: 18px;
+
 }
 
 .card {
     margin: 10px;
     padding: 10px;
     background-color: rgb(202, 202, 206);
+    width: 80%;
+    line-height: 150%;
+    font-size: 14px;
 }
 
 .topic-list {

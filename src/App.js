@@ -1,4 +1,5 @@
 import React from 'react';
+import AllCards from './components/AllCards';
 import Card from './components/Card';
 import Form from './components/Form';
 import './CSS/App.css';
@@ -29,29 +30,29 @@ class App extends React.Component {
           const noventa = 91;
           const somaMax = 210;
           if (
-            !cardName || !cardDescription || !cardImage
-            || soma > somaMax
-            || Number(cardAttr1) >= noventa
-            || Number(cardAttr2) >= noventa
-            || Number(cardAttr3) >= noventa
-            || Number(cardAttr1) < 0
-            || Number(cardAttr2) < 0
-            || Number(cardAttr3) < 0) return 'true';
+            cardName && cardDescription && cardImage
+            && soma < somaMax
+            && Number(cardAttr1) <= noventa
+            && Number(cardAttr2) <= noventa
+            && Number(cardAttr3) <= noventa
+            && Number(cardAttr1) > 0
+            && Number(cardAttr2) > 0
+            && Number(cardAttr3) > 0) {
+            this.setState({
+              isSaveButtonDisabled: false });
+          } else {
+            this.setState({
+              isSaveButtonDisabled: true });
+          }
         }
 
         onInputChange = (event) => {
-        //   const { name } = event.target;
-        //   const { value } = event.target;
-        //   this.setState({ [name]: value });
-        //   this.setState({ cardName: event.target.value });
           const { target } = event;
           this.setState({
             [target.name]: target.type === 'checkbox'
               ? target.checked
               : target.value,
-          }, () => this.setState({
-            isSaveButtonDisabled: this.validate(),
-          }));
+          }, () => this.validate());
         }
 
         hasTrunfo = () => {
@@ -95,15 +96,13 @@ class App extends React.Component {
             cardTrunfo: false,
             isSaveButtonDisabled: true,
           }), () => this.setState({ hasTrunfo: this.hasTrunfo() }));
-          // this.setState({
-          // });
         }
 
         deleteCard = (cardName) => {
-          console.log(cardName);
-          // this.setState((prev) => ({
-          //   newCard: prev.newCard.filter((carta) => carta.cardName !== cardName),
-          // }));
+          // console.log(cardName);
+          this.setState((prev) => ({
+            newCard: prev.newCard.filter((carta) => carta.cardName !== cardName),
+          }));
         }
 
         render() {
@@ -139,26 +138,26 @@ class App extends React.Component {
                     onSaveButtonClick={ this.onSaveButtonClick }
                     isSaveButtonDisabled={ isSaveButtonDisabled }
                     hasTrunfo={ hasTrunfo }
-                    sendForm={ this.sendForm }
                   />
                 </form>
                 {/* <h1>Sua nova carta será:</h1> */}
-                <Card
-                  className="card"
-                  cardName={ cardName }
-                  cardDescription={ cardDescription }
-                  cardAttr1={ cardAttr1 }
-                  cardAttr2={ cardAttr2 }
-                  cardAttr3={ cardAttr3 }
-                  cardImage={ cardImage }
-                  cardRare={ cardRare }
-                  cardTrunfo={ cardTrunfo }
-                />
+                <div className="card">
+                  <Card
+                    cardName={ cardName }
+                    cardDescription={ cardDescription }
+                    cardAttr1={ cardAttr1 }
+                    cardAttr2={ cardAttr2 }
+                    cardAttr3={ cardAttr3 }
+                    cardImage={ cardImage }
+                    cardRare={ cardRare }
+                    cardTrunfo={ cardTrunfo }
+                  />
+                </div>
               </div>
               <h1 className="titulo">Cartas criadas:</h1>
               <div className="topic-list">
                 {
-                  newCard.map((carta) => (<Card
+                  newCard.map((carta) => (<AllCards
                     key={ carta.cardName }
                     { ...carta }
                     deleteCard={ this.deleteCard }
