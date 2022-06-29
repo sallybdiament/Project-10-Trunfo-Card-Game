@@ -27,17 +27,17 @@ class App extends React.Component {
             cardName, cardDescription, cardImage, cardAttr1, cardAttr2, cardAttr3,
           } = this.state;
           const soma = (Number(cardAttr1) + Number(cardAttr2) + Number(cardAttr3));
-          const noventa = 91;
+          const noventa = 90;
           const somaMax = 210;
           if (
             cardName && cardDescription && cardImage
-            && soma < somaMax
+            && soma <= somaMax
             && Number(cardAttr1) <= noventa
             && Number(cardAttr2) <= noventa
             && Number(cardAttr3) <= noventa
-            && Number(cardAttr1) > 0
-            && Number(cardAttr2) > 0
-            && Number(cardAttr3) > 0) {
+            && Number(cardAttr1) >= 0
+            && Number(cardAttr2) >= 0
+            && Number(cardAttr3) >= 0) {
             this.setState({
               isSaveButtonDisabled: false });
           } else {
