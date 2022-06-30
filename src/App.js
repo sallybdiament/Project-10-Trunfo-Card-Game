@@ -102,7 +102,7 @@ class App extends React.Component {
           // console.log(cardName);
           this.setState((prev) => ({
             newCard: prev.newCard.filter((carta) => carta.cardName !== cardName),
-          }));
+          }), () => this.setState({ hasTrunfo: this.hasTrunfo() }));
         }
 
         render() {
