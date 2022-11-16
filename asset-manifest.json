@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/Project-10-Trunfo-Card-Game/static/css/main.8fca158b.css",
+    "main.js": "/Project-10-Trunfo-Card-Game/static/js/main.999aecad.js",
+    "index.html": "/Project-10-Trunfo-Card-Game/index.html",
+    "main.8fca158b.css.map": "/Project-10-Trunfo-Card-Game/static/css/main.8fca158b.css.map",
+    "main.999aecad.js.map": "/Project-10-Trunfo-Card-Game/static/js/main.999aecad.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.8fca158b.css",
+    "static/js/main.999aecad.js"
+  ]
+}
